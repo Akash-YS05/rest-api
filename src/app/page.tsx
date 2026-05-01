@@ -326,8 +326,8 @@ export default function HomePage() {
 
       {/* Notifications */}
       {message && (
-        <div className={`fixed bottom-10 right-10 z-50 arch-box arch-shadow px-8 py-5 font-black text-sm uppercase tracking-widest ${
-          message.type === 'success' ? 'bg-[#D25A46] text-white' : 'bg-black text-white'
+        <div className={`fixed bottom-10 right-10 z-50 arch-shadow px-8 py-5 font-black text-sm uppercase tracking-widest ${
+          message.type === 'success' ? 'bg-[#D25A46] text-white' : 'bg-[#1A1C20] text-white'
         }`}>
           {message.text}
         </div>
