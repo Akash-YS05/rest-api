@@ -1,7 +1,6 @@
-import { withHandler } from "@/server/http/with-handler";
-import { ok } from "@/server/http/response";
 import { openApiDocument } from "@/server/docs/openapi";
+import { withHandler } from "@/server/http/with-handler";
 
 export const GET = withHandler(async () => {
-  return ok(openApiDocument, 200);
+  return Response.json(openApiDocument, { status: 200 });
 });
