@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Syne, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
+import { Analytics } from "@vercel/analytics/next"
 
 const syne = Syne({
   variable: "--font-syne",
@@ -14,7 +15,7 @@ const mono = IBM_Plex_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "REFINED | API Workspace",
+  title: "API Workspace",
   description: "Architectural REST API Interface.",
 };
 
@@ -30,6 +31,7 @@ export default function RootLayout({
     >
       <body className="min-h-full bg-[#F9F6F0] text-[#1A1C20] selection:bg-[#D25A46] selection:text-white">
         {children}
+        <Analytics/>
       </body>
     </html>
   );
