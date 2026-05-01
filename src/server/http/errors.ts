@@ -1,4 +1,3 @@
-import { Prisma } from "@prisma/client";
 import { ZodError } from "zod";
 import { AppError } from "@/server/lib/error";
 import { fail } from "@/server/http/response";
@@ -13,10 +12,15 @@ export const toErrorResponse = (error: unknown) => {
     return fail(400, "VALIDATION_ERROR", "Validation failed", error.flatten());
   }
 
-  if (error instanceof Prisma.PrismaClientKnownRequestError) {
-    if (error.code === "P2002") {
-      return fail(409, "DUPLICATE_RESOURCE", "Resource already exists");
-    }
+  const errorRecord = error as Record<string, unknown>;
+
+  if (
+    errorRecord &&
+    typeof errorRecord === "object" &&
+    "code" in errorRecord &&
+    errorRecord.code === "P2002"
+  ) {
+    return fail(409, "DUPLICATE_RESOURCE", "Resource already exists");
   }
 
   logger.error({ error }, "Unhandled API error");
