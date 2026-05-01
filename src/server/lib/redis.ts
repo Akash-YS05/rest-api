@@ -1,10 +1,12 @@
 import Redis from "ioredis";
-import { env } from "@/lib/env";
+import { getEnv } from "@/lib/env";
 import { logger } from "@/server/lib/logger";
 
 let client: Redis | null = null;
 
 export const getRedis = (): Redis | null => {
+  const env = getEnv();
+
   if (!env.REDIS_URL) {
     return null;
   }

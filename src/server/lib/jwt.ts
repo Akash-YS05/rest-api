@@ -1,6 +1,7 @@
 import jwt from "jsonwebtoken";
-import { env } from "@/lib/env";
+import { getEnv } from "@/lib/env";
 import type { AccessTokenPayload, RefreshTokenPayload } from "@/server/types/auth";
+const env = getEnv();
 
 export const signAccessToken = (payload: AccessTokenPayload): string => {
   return jwt.sign(payload, env.JWT_ACCESS_SECRET, {

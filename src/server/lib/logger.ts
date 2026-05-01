@@ -1,9 +1,11 @@
 import pino from "pino";
-import { env } from "@/lib/env";
+import { getEnv } from "@/lib/env";
 
 let cached: pino.Logger | undefined;
 
 export const getLogger = (): pino.Logger => {
+  const env = getEnv();
+
   if (cached) {
     return cached;
   }

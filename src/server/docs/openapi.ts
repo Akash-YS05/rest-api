@@ -1,4 +1,5 @@
-import { env } from "@/lib/env";
+import { getEnv } from "@/lib/env";
+const env = getEnv();
 
 export const openApiDocument = {
   openapi: "3.0.3",

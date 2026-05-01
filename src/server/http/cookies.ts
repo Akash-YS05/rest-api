@@ -1,4 +1,5 @@
-import { env } from "@/lib/env";
+import { getEnv } from "@/lib/env";
+const env = getEnv();
 
 export const REFRESH_COOKIE_NAME = "refresh_token";
 

@@ -1,4 +1,5 @@
-import { env } from "@/lib/env";
+import { getEnv } from "@/lib/env";
+const env = getEnv();
 import { withHandler } from "@/server/http/with-handler";
 import { parseJsonBody } from "@/server/http/request";
 import { ok } from "@/server/http/response";
