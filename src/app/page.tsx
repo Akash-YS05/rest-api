@@ -235,6 +235,28 @@ export default function HomePage() {
                     {loading ? "Processing" : authMode === "login" ? "Sign In" : "Register"}
                   </button>
                 </form>
+
+                <div className="pt-6 border-t-2 border-[#1A1C20]">
+                  <p className="text-xs font-mono uppercase tracking-widest opacity-50 mb-4">Demo Credentials</p>
+                  <div className="space-y-3">
+                    <button
+                      type="button"
+                      onClick={() => { setAuthMode("login"); setEmail("admin@example.com"); setPassword("Admin@1234"); }}
+                      className="w-full text-left px-4 py-3 border-2 border-[#1A1C20] hover:border-[#D25A46] hover:bg-[#D25A46]/5 transition-all group"
+                    >
+                      <span className="text-xs font-black uppercase tracking-tighter group-hover:text-[#D25A46] transition-colors">Admin</span>
+                      <span className="block text-xs font-mono opacity-50 mt-0.5">admin@example.com</span>
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => { setAuthMode("login"); setEmail("user@example.com"); setPassword("Admin@1234"); }}
+                      className="w-full text-left px-4 py-3 border-2 border-[#1A1C20] hover:border-[#D25A46] hover:bg-[#D25A46]/5 transition-all group"
+                    >
+                      <span className="text-xs font-black uppercase tracking-tighter group-hover:text-[#D25A46] transition-colors">User</span>
+                      <span className="block text-xs font-mono opacity-50 mt-0.5">user@example.com</span>
+                    </button>
+                  </div>
+                </div>
               </div>
             )}
           </div>
@@ -284,7 +306,7 @@ export default function HomePage() {
                       <div className="flex-1">
                         <div className="flex items-center gap-4 mb-3">
                           <span className="text-xs font-mono text-[#D25A46] font-black uppercase">Task {task.id.slice(0, 4)}</span>
-                          <h3 className="font-black text-2xl uppercase tracking-tighter leading-none">{task.title}</h3>
+                          <h3 className="font-black text-2xl uppercase tracking-tighter font-semibold leading-none">{task.title}</h3>
                         </div>
                         {task.description && <p className="text-sm font-bold opacity-70 max-w-xl leading-snug">{task.description}</p>}
                       </div>
