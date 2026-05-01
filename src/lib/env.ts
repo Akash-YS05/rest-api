@@ -22,9 +22,11 @@ const parsedEnv = envSchema.safeParse({
   API_BASE_URL: process.env.API_BASE_URL,
 });
 
-if (!parsedEnv.success) {
+const isBuildTime = process.env.NEXT_PHASE === "phase-production-build";
+
+if (!parsedEnv.success && !isBuildTime) {
   const flattened = parsedEnv.error.flatten().fieldErrors;
   throw new Error(`Invalid environment variables: ${JSON.stringify(flattened)}`);
 }
 
-export const env = parsedEnv.data;
+export const env = parsedEnv.data as z.infer<typeof envSchema>;

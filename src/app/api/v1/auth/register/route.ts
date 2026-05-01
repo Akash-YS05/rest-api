@@ -5,6 +5,8 @@ import { ok } from "@/server/http/response";
 import { registerSchema } from "@/server/schemas/auth";
 import { registerUser } from "@/server/services/auth-service";
 
+export const dynamic = "force-dynamic";
+
 export const POST = withHandler(async (request) => {
   const body = await parseJsonBody<unknown>(request);
   const parsed = registerSchema.parse(body);

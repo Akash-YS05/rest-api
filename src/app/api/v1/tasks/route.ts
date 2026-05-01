@@ -6,6 +6,8 @@ import { requireAccessAuth, requireAnyRole } from "@/server/http/auth";
 import { createTaskSchema, listTasksQuerySchema } from "@/server/schemas/task";
 import { createTask, listTasks } from "@/server/services/task-service";
 
+export const dynamic = "force-dynamic";
+
 export const GET = withHandler(async (request) => {
   const auth = requireAccessAuth(request);
   const query = Object.fromEntries(request.nextUrl.searchParams.entries());

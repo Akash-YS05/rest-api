@@ -7,6 +7,8 @@ import { rotateRefreshToken } from "@/server/services/auth-service";
 import { AppError } from "@/server/lib/error";
 import { REFRESH_COOKIE_NAME, refreshCookieOptions } from "@/server/http/cookies";
 
+export const dynamic = "force-dynamic";
+
 export const POST = withHandler(async (request) => {
   const body = await parseJsonBody<unknown>(request);
   const parsed = refreshSchema.parse(body);

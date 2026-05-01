@@ -3,6 +3,8 @@ import { withHandler } from "@/server/http/with-handler";
 import { requireAccessAuth } from "@/server/http/auth";
 import { ok } from "@/server/http/response";
 
+export const dynamic = "force-dynamic";
+
 export const GET = withHandler(async (request) => {
   const auth = requireAccessAuth(request);
 

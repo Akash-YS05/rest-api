@@ -13,6 +13,8 @@ type ParamsContext = {
   }>;
 };
 
+export const dynamic = "force-dynamic";
+
 export const PUT = withHandler<ParamsContext>(async (request, context) => {
   const auth = requireAccessAuth(request);
   requireAnyRole(["USER", "ADMIN"], auth.role);

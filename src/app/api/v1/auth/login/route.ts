@@ -6,6 +6,8 @@ import { loginSchema } from "@/server/schemas/auth";
 import { loginUser } from "@/server/services/auth-service";
 import { REFRESH_COOKIE_NAME, refreshCookieOptions } from "@/server/http/cookies";
 
+export const dynamic = "force-dynamic";
+
 export const POST = withHandler(async (request) => {
   const body = await parseJsonBody<unknown>(request);
   const parsed = loginSchema.parse(body);
