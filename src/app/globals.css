@@ -1,26 +1,125 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-paper: #F9F6F0;
+  --color-ink: #1A1C20;
+  --color-accent: #D25A46;
+  --color-line: rgba(26, 28, 32, 0.1);
+  
+  --font-sans: var(--font-syne);
+  --font-mono: var(--font-mono);
+  
+  --radius-none: 0;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+:root {
+  --background: #F9F6F0;
+  --foreground: #1A1C20;
+  --accent: #D25A46;
+  --border: #1A1C20;
 }
 
 body {
-  background: var(--background);
+  background-color: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-mono), monospace;
+  overflow-x: hidden;
 }
+
+h1, h2, h3, h4 {
+  font-family: var(--font-syne), sans-serif;
+  text-transform: uppercase;
+  letter-spacing: -0.08em;
+}
+
+/* Architectural Grid Background */
+.arch-grid {
+  background-image: 
+    linear-gradient(to right, var(--color-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--color-line) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* Sharp Box Utility */
+.arch-box {
+  border: 1px solid var(--border);
+  background: white;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Hard Shadow Interaction */
+.arch-shadow {
+  box-shadow: 6px 6px 0px var(--border);
+}
+
+.arch-button {
+  border: 1px solid var(--border);
+  background: white;
+  padding: 12px 24px;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.875rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s ease;
+  position: relative;
+  box-shadow: 4px 4px 0px var(--border);
+}
+
+.arch-button:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px var(--border);
+}
+
+.arch-button:active {
+  transform: translate(2px, 2px);
+  box-shadow: 0px 0px 0px var(--border);
+}
+
+.arch-button-primary {
+  background: var(--accent);
+  color: white;
+}
+
+.arch-input {
+  border: 1px solid var(--border);
+  background: white;
+  padding: 12px 16px;
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  width: 100%;
+}
+
+.arch-input:focus {
+  outline: none;
+  background: #fff;
+  box-shadow: 4px 4px 0px var(--accent);
+}
+
+/* Distinctive Section Headers */
+.section-marker {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 8px;
+}
+
+.section-marker::before {
+  content: "";
+  height: 1px;
+  width: 24px;
+  background: var(--accent);
+}
+
+/* Swagger Dark Mode Overrides for Light Theme */
+.swagger-ui {
+  filter: none;
+}
+.swagger-ui .topbar { display: none; }
+.swagger-ui .info .title { color: var(--foreground) !important; font-family: var(--font-syne) !important; }
+.swagger-ui .btn.execute { background-color: var(--accent) !important; border-color: var(--accent) !important; border-radius: 0 !important; }
+.swagger-ui .opblock { border-radius: 0 !important; border-color: var(--foreground) !important; }
